@@ -2,12 +2,13 @@ $(document).ready(function(){
 
 	let valueInput = v => document.getElementById(v);
 	var modal = valueInput('HelloModal'),
-	startGameBtn = valueInput('startGameBtn');	
+	container = valueInput('containerSection'),
+	startGameBtn = valueInput('startGameBtn');
 	answerBtn = valueInput('answerBtn');
 	reGameBtn = valueInput('reGameBtn');
 
 	function add(count) {
-		var index, valueIndex; 
+		var index, valueIndex;
 		var mixArray = [];
 		count = count/2;
 		for (var i = 1; i <= count; i++) {
@@ -55,6 +56,8 @@ $(document).ready(function(){
         if(sizeGame == 30 || sizeGame == 36) $(".game").css('width','660px');
 
         modal.style.display = "none";
+		container.style.display = "block";
+
 
         answerBtn.onclick = function(){
         	for (var i = 0; i < sizeGame; i++) {

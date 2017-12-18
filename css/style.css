@@ -106,7 +106,7 @@ body {
     align-items: center;
 }
 
-.modal-btn__button {
+.g-btn {
     border: 1px solid #001C20;
     border-radius: 5px;
     padding: 0 50px;
@@ -118,7 +118,7 @@ body {
     transition: all linear .3s;
 }
 
-.modal-btn__button:hover {
+.g-btn:hover {
     color: #10ACC2;
 }
 
@@ -134,6 +134,31 @@ body {
     border: 1px solid #001C20;
     border-radius: 15px;
     background-color: #001C20;
+}
+
+.game-title {
+    color: #001C20;
+    font-size: 56px;
+    display: block;
+}
+
+.game--btn {
+    margin-right: 10px;
+}
+
+.game--btn:last-child {
+    margin-right: 0;
+}
+
+.game-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.game-content__btn {
+    display: block;
 }
 
 .game div {
