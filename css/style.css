@@ -155,10 +155,12 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .game-content__btn {
-    display: block;
+
 }
 
 .game div {
