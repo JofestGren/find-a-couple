@@ -20,7 +20,8 @@
 }
 
 body {
-    /* font-family: 'Roboto'; */
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    color: #fff;
 }
 
 .container {
@@ -31,6 +32,7 @@ body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 18px;
     color: #fff;
+    display: none;
 }
 
 .modal {
@@ -42,28 +44,30 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgb(0,0,0,0.4);
+    background-color: #1A3337;
 
 }
 
 .modal-content {
-    background-color: #fefefe;
-    color: #2d3b4d;
+    background-color: #10ACC2;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
+    /* border: 1px solid #888; */
     width: 60%;
+    border-radius: 10px;
 }
 
 .modal-title {
-    color: #2d3b4d;
-    font-size: 24;
-    /* font-weight: bold; */
+    font-size: 48px;
     font-family: 'Roboto-Bold';
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.modal-text {
+    color: #B1EEF2;
+    font-size: 24px;
 }
 
 .modal-select {
@@ -74,38 +78,26 @@ body {
 
 .modal-select__category {
     margin-right: 10px;
-    border: 2px solid #2d3b4d;
-    border-radius: 10px;
-    padding: 0 30px;
-    height: 40px;
-    color: #2d3b4d;
-    font-size: 16px;
+    border: 1px solid #001C20;
+    border-radius: 5px;
+    padding: 0 40px;
+    height: 50px;
+    font-size: 18px;
     appearance: none;
+    background-color: #001C20;
+    color: #fff;
 }
 
 .modal-select__category:last-child {
     margin-right: 0;
 }
 
+
 .modal-select__category:focus {
     outline: none;
     box-shadow: none;
-    border: 2px solid #2d3b4d;
-    border-radius: 10px;
-}
-
-.modal-content__close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.modal-content__close:hover,
-.modal-content__close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+    border: 1px solid #001C20;
+    border-radius: 5px;
 }
 
 .modal-btn {
@@ -115,30 +107,20 @@ body {
 }
 
 .modal-btn__button {
-    border: 2px solid #2d3b4d;
-    border-radius: 20px;
-    padding: 0 30px;
-    height: 40px;
-    background-color: #fff;
-    color: #2d3b4d;
+    border: 1px solid #001C20;
+    border-radius: 5px;
+    padding: 0 50px;
+    height: 50px;
+    background-color: #001C20;
+    color: #fff;
     cursor: pointer;
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 18px;
-    font-weight: bold;
+    transition: all linear .3s;
 }
 
 .modal-btn__button:hover {
-    background-color: #2d3b4d;
-    color: #fff;
+    color: #10ACC2;
 }
-
-/* .game div{
-    width: 100px;
-    height: 100px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    float: left;
-} */
 
 .game {
     display: flex;
@@ -154,21 +136,11 @@ body {
     background-color: #001C20;
 }
 
-.game-icon {
+.game div {
     width: 100px;
     height: 100px;
     border: 5px solid #001C20;
-    /* border-width: 6px 3px 6px 3px; */
     border-radius: 15px;
     cursor: pointer;
     background-color: #10ACC2;
-    /* float: left; */
 }
-
-/* .game-icon:first-child {
-    border-width: 6px 3px 6px 6px;
-}
-
-.game-icon:last-child {
-    border-width: 6px 6px 6px 3px;
-} */
