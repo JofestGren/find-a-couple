@@ -20,8 +20,17 @@
 }
 
 body {
-    font-family: 'Roboto';
+    /* font-family: 'Roboto'; */
+}
+
+.container {
+    width: 100%;
+    max-width: 1150px;
+    padding: 60px 20px;
+    margin: 0 auto;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 18px;
+    color: #fff;
 }
 
 .modal {
@@ -123,10 +132,43 @@ body {
     color: #fff;
 }
 
-.game div{
+/* .game div{
     width: 100px;
     height: 100px;
     border: 1px solid #ccc;
     cursor: pointer;
     float: left;
+} */
+
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 660px;
+    padding: 5px;
+    margin: 0 auto;
+    border: 1px solid #001C20;
+    border-radius: 15px;
+    background-color: #001C20;
 }
+
+.game-icon {
+    width: 100px;
+    height: 100px;
+    border: 5px solid #001C20;
+    /* border-width: 6px 3px 6px 3px; */
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #10ACC2;
+    /* float: left; */
+}
+
+/* .game-icon:first-child {
+    border-width: 6px 3px 6px 6px;
+}
+
+.game-icon:last-child {
+    border-width: 6px 6px 6px 3px;
+} */
