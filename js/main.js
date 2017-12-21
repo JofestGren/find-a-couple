@@ -23,22 +23,25 @@ $(document).ready(function(){
 		}
 		return mixArray;
 	}
-	function clearImg() {
-		$('.game div').each(function(){
-			if( $(this).data('state') == 1 ){
-				$(this).data('state',0).attr('data-state',0).css('backgroundImage', 'none');
-			}
-		});
-	}
 	function answer() {
 	}
 	function game() {
 
+					function clearImg() {
+						$('.game div').each(function(){
+							if( $(this).data('state') == 1 ){
+								$(this).data('state',0).attr('data-state',0).css('backgroundImage', 'none');
+							}
+						});
+						click_flag = 0;
+					}
+					
 		var category = valueInput('category').value,
 		sizeGame = valueInput('sizeGame').value;
 		var last_img; //Последняя показанная картинка
 		var img_der = 'image/'; //Путь к папке с картинками
 		var count_click = 0; //Кол-во кликов
+		var click_flag = 0;
         var game_array = add(sizeGame); //перемешиваем массив (картинки)
 
         for (var i = 0; i < sizeGame; i++) {
@@ -56,7 +59,7 @@ $(document).ready(function(){
         if(sizeGame == 30 || sizeGame == 36) $(".game").css('width','660px');
 
         modal.style.display = "none";
-		container.style.display = "block";
+        container.style.display = "block";
 
 
         answerBtn.onclick = function(){
@@ -68,7 +71,7 @@ $(document).ready(function(){
 
          $('.game div').click(function(){ //Клик на игровом поле
 
-		if( $(this).data('state') == 0){ //Если ячейка закрыта
+		if( $(this).data('state') == 0 && click_flag == 0){ //Если ячейка закрыта
 			if( count_click == 0 ){ //Если первый клик по закрытому полю
 				count_click++;
 				last_img = $(this).attr('class');
@@ -79,6 +82,8 @@ $(document).ready(function(){
 					$('.' + last_img).data('state',2).attr('data-state',2).css('backgroundImage', 'url(' + img_der + last_img + '.jpg)');
 				}else{
 					$(this).data('state', 1).attr('data-state',1).css('backgroundImage', 'url(' + img_der + $(this).attr('class') + '.jpg)');
+					click_flag = 1;
+
 					setTimeout(clearImg, 700);
 				}
 				count_click = 0;
