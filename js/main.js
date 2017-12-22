@@ -27,8 +27,11 @@ $(document).ready(function(){
 	answerBtn = valueInput('answerBtn');
 	reGameBtn = valueInput('reGameBtn');
 	var startDate = new Date();
+	var game_flag = null;
 
 	function startTIME() { 
+		if (game_flag == 1)
+		{
 		var thisDate = new Date();
 		var t = thisDate.getTime() - startDate.getTime();
 		var ms = t%1000; t-=ms; ms=Math.floor(ms/10);
@@ -44,6 +47,7 @@ $(document).ready(function(){
 		if (ms<10) ms='0'+ms;
 		document.timeForm.time.value = h + ':' + m + ':' + s + '.' + ms;
 		setTimeout(startTIME,10);
+	}
 	}
 
 	function add(count) {
@@ -62,8 +66,7 @@ $(document).ready(function(){
 		}
 		return mixArray;
 	}
-	function answer() {
-	}
+
 	function game() {
 
 		function clearImg() {
@@ -78,7 +81,8 @@ $(document).ready(function(){
 		// var category = valueInput('category').value,
 		// var sizeGame = valueInput('sizeGame').value;
 		var category = "Animals";
-		var sizeGame = 16;
+		var sizeGame = 4;
+		var sizeGameTemp = sizeGame/2;
 		var last_img; //Последняя показанная картинка
 		var img_der = 'image/'; //Путь к папке с картинками
 		var count_click = 0; //Кол-во кликов
@@ -102,14 +106,18 @@ $(document).ready(function(){
         modal.style.display = "none";
         container.style.display = "block";
 
-
         answerBtn.onclick = function(){
         	for (var i = 0; i < sizeGame; i++) {
         		$('.' + i).css('backgroundImage', 'url(' + img_der + i + '.jpg)');
-        	}
+        	}	
+         game_flag = 0;
         };
+
         reGameBtn.onclick = function(){location.reload()};
+
+        game_flag = 1;
         startTIME();
+
          $('.game div').click(function(){ //Клик на игровом поле
 		if( $(this).data('state') == 0 && click_flag == 0){ //Если ячейка закрыта
 			if( count_click == 0 ){ //Если первый клик по закрытому полю
@@ -120,6 +128,8 @@ $(document).ready(function(){
 				//Если картинки совпадают
 				if( last_img == $(this).attr('class')  ){
 					$('.' + last_img).data('state',2).attr('data-state',2).css('backgroundImage', 'url(' + img_der + last_img + '.jpg)');
+					sizeGameTemp--;
+					console.log(sizeGameTemp);
 				}else{
 					$(this).data('state', 1).attr('data-state',1).css('backgroundImage', 'url(' + img_der + $(this).attr('class') + '.jpg)');
 					click_flag = 1;
@@ -129,6 +139,9 @@ $(document).ready(function(){
 				count_click = 0;
 			}
 		}
+		         if (sizeGameTemp == 0) {
+         	game_flag = 0;
+         }
 	});
      }
 
