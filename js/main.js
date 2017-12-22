@@ -23,19 +23,19 @@ $(document).ready(function(){
 	let valueInput = v => document.getElementById(v);
 	var modal = valueInput('HelloModal'),
 	container = valueInput('containerSection'),
-	startGameBtn = valueInput('startGameBtn');
-	answerBtn = valueInput('answerBtn');
-	reGameBtn = valueInput('reGameBtn');
+	startGameBtn = valueInput('startGameBtn'),
+	answerBtn = valueInput('answerBtn'),
+	reGameBtn = valueInput('reGameBtn'),
 	var startDate = new Date();
 	var game_time = new Date();
 	var game_flag = null;
 
-	function popup() {
-	alert(game_time); //HH:mm:ss.sss
-	}
+	let resultWindow = valueInput('resultWindow');
+
+	let resultCreate = () => resultWindow.style.display = 'block';
 
 
-	function startTIME() { 
+	function startTIME() {
 		if (game_flag == 1)
 		{
 		var thisDate = new Date();
@@ -116,7 +116,7 @@ $(document).ready(function(){
         answerBtn.onclick = function(){
         	for (var i = 0; i < sizeGame; i++) {
         		$('.' + i).css('backgroundImage', 'url(' + img_der + i + '.jpg)');
-        	}	
+        	}
          game_flag = 0;
         };
 
