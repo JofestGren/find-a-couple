@@ -23,9 +23,9 @@ $(document).ready(function(){
 	let valueInput = v => document.getElementById(v);
 	var modal = valueInput('HelloModal'),
 	container = valueInput('containerSection'),
-	startGameBtn = valueInput('startGameBtn'),
-	answerBtn = valueInput('answerBtn'),
-	reGameBtn = valueInput('reGameBtn'),
+	startGameBtn = valueInput('startGameBtn');
+	answerBtn = valueInput('answerBtn');
+	reGameBtn = valueInput('reGameBtn');
 	var startDate = new Date();
 	var game_time = new Date();
 	var game_flag = null;
@@ -34,10 +34,14 @@ $(document).ready(function(){
 
 	let resultCreate = () => resultWindow.style.display = 'block';
 
+	function popup() {
+	alert(game_time); //HH:mm:ss.sss
+}
 
-	function startTIME() {
-		if (game_flag == 1)
-		{
+
+function startTIME() {
+	if (game_flag == 1)
+	{
 		var thisDate = new Date();
 		var t = thisDate.getTime() - startDate.getTime();
 		var ms = t%1000; t-=ms; ms=Math.floor(ms/10);
@@ -55,38 +59,40 @@ $(document).ready(function(){
 		game_time.setHours(h, m, s, ms);
 		setTimeout(startTIME,10);
 	}
+}
+
+function add(count) {
+	var index, valueIndex;
+	var mixArray = [];
+	count = count/2;
+	for (var i = 1; i <= count; i++) {
+		mixArray.push(i);
+		mixArray.push(i);
+	}
+	for (var i = 0; i < mixArray.length; i++) {
+		index = Math.floor(Math.random()*i);
+		valueIndex = mixArray[index];
+		mixArray[index] = mixArray[i];
+		mixArray[i] = valueIndex;
+	}
+	return mixArray;
+}
+
+function game() {
+
+	function clearImg() {
+		$('.game div').each(function(){
+			if( $(this).data('state') == 1 ){
+				$(this).data('state',0).attr('data-state',0).css('backgroundImage', 'none');
+			}
+		});
+		click_flag = 0;
 	}
 
-	function add(count) {
-		var index, valueIndex;
-		var mixArray = [];
-		count = count/2;
-		for (var i = 1; i <= count; i++) {
-			mixArray.push(i);
-			mixArray.push(i);
-		}
-		for (var i = 0; i < mixArray.length; i++) {
-			index = Math.floor(Math.random()*i);
-			valueIndex = mixArray[index];
-			mixArray[index] = mixArray[i];
-			mixArray[i] = valueIndex;
-		}
-		return mixArray;
-	}
 
-	function game() {
-
-		function clearImg() {
-			$('.game div').each(function(){
-				if( $(this).data('state') == 1 ){
-					$(this).data('state',0).attr('data-state',0).css('backgroundImage', 'none');
-				}
-			});
-			click_flag = 0;
-		}
-
-		// var category = valueInput('category').value,
-		// var sizeGame = valueInput('sizeGame').value;
+		// var category = valueInput('category').getElementsByClassName('modal-select__item')[this.value];
+		// // sizeGame = valueInput('sizegame').getElementsByClassName('modal-select__item').innerText;
+		// console.log(category);
 		var category = "Animals";
 		var sizeGame = 4;
 		var sizeGameTemp = sizeGame/2;
@@ -95,6 +101,7 @@ $(document).ready(function(){
 		var count_click = 0; //Кол-во кликов
 		var click_flag = 0;
         var game_array = add(sizeGame); //перемешиваем массив (картинки)
+        var localStorageName = "bestTime";
 
         for (var i = 0; i < sizeGame; i++) {
         	$("<div/>", {
@@ -104,7 +111,7 @@ $(document).ready(function(){
         }
 
         img_der += category + '/';
-
+        localStorageName += sizeGame;
         if(sizeGame == 4) $(".game").css('width','220px');
         if(sizeGame == 12 || sizeGame == 16) $(".game").css('width','440px');
         if(sizeGame == 20) $(".game").css('width','550px');
@@ -117,15 +124,14 @@ $(document).ready(function(){
         	for (var i = 0; i < sizeGame; i++) {
         		$('.' + i).css('backgroundImage', 'url(' + img_der + i + '.jpg)');
         	}
-         game_flag = 0;
+        	game_flag = 0;
         };
 
         reGameBtn.onclick = function(){location.reload()};
 
-        game_flag = 1;
-        startTIME();
-
          $('.game div').click(function(){ //Клик на игровом поле
+         	game_flag = 1;
+         	startTIME();
 		if( $(this).data('state') == 0 && click_flag == 0){ //Если ячейка закрыта
 			if( count_click == 0 ){ //Если первый клик по закрытому полю
 				count_click++;
@@ -136,7 +142,6 @@ $(document).ready(function(){
 				if( last_img == $(this).attr('class')  ){
 					$('.' + last_img).data('state',2).attr('data-state',2).css('backgroundImage', 'url(' + img_der + last_img + '.jpg)');
 					sizeGameTemp--;
-					console.log(sizeGameTemp);
 				}else{
 					$(this).data('state', 1).attr('data-state',1).css('backgroundImage', 'url(' + img_der + $(this).attr('class') + '.jpg)');
 					click_flag = 1;
@@ -146,15 +151,16 @@ $(document).ready(function(){
 				count_click = 0;
 			}
 		}
-		         if (sizeGameTemp == 0) {
-         	game_flag = 0;
-         	popup();
-         }
-   //       if (true) {
-			// popup();
-   //       }
+		if (sizeGameTemp == 0) {
+			game_flag = 0;
+			if (game_time < (localStorage.getItem(localStorageName)) || localStorage.getItem(localStorageName) == undefined) {
+				localStorage.setItem(localStorageName, game_time.getTime());
+				resultCreate();
+			}
+			else
+				resultCreate();
+		}
 	});
      }
-
      startGameBtn.onclick = game;
  });
