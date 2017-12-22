@@ -27,7 +27,13 @@ $(document).ready(function(){
 	answerBtn = valueInput('answerBtn');
 	reGameBtn = valueInput('reGameBtn');
 	var startDate = new Date();
+	var game_time = new Date();
 	var game_flag = null;
+
+	function popup() {
+	alert(game_time); //HH:mm:ss.sss
+	}
+
 
 	function startTIME() { 
 		if (game_flag == 1)
@@ -46,6 +52,7 @@ $(document).ready(function(){
 		if (s<10) s='0'+s;
 		if (ms<10) ms='0'+ms;
 		document.timeForm.time.value = h + ':' + m + ':' + s + '.' + ms;
+		game_time.setHours(h, m, s, ms);
 		setTimeout(startTIME,10);
 	}
 	}
@@ -141,7 +148,11 @@ $(document).ready(function(){
 		}
 		         if (sizeGameTemp == 0) {
          	game_flag = 0;
+         	popup();
          }
+   //       if (true) {
+			// popup();
+   //       }
 	});
      }
 
