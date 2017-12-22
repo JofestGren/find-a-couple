@@ -221,15 +221,23 @@ body {
     border: 5px solid #10ACC2;
     border-radius: 15px;
     background-color: #001C20;
+    color: #B1EEF2;
     text-align: center;
     padding: 10px 20px;
-    line-height: 30px;
+    line-height: 40px;
     margin: 0;
     max-width: 150px;
 }
 
-.game-info__scorebest span {
+.game-info__scorebest input {
     display: block;
+    border: none;
+    background-color: #001C20;
+    color: #B1EEF2;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Roboto';
+
 }
 
 .game-info__btn {

@@ -50,9 +50,13 @@
                  <h1>Find a Couple</h1>
              </div>
              <div class="game-info">
-                 <form name="timeForm">
-                 <input name="time" size="12" maxlength="12" value="00:00:00.00">
-                 <input name="bestTime" size="12" maxlength="12" value="00:00:00.00">
+                <form class="game-info__result" name="timeForm">
+                    <div class="game-info__scorebest"><span>Time</span>
+                        <input name="time" size="12" maxlength="12" value="00:00:00.00">
+                    </div>
+                    <div class="game-info__scorebest"><span>Best</span>
+                        <input name="bestTime" size="12" maxlength="12" value="00:00:00.00">
+                    </div>
                 </form>
                  <div class="game-info__btn">
                      <button class="g-btn game--btn" id="answerBtn" type="button" name="button">Solve game</button>
