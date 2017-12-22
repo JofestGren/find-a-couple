@@ -1,5 +1,25 @@
 $(document).ready(function(){
 
+	$('.select--category').click(function () {
+        var menu = $('.list--category');
+        $(this).toggleClass('active');
+        if (menu.is(':visible')) {
+            menu.slideUp();
+        } else {
+            menu.slideDown();
+        }
+    });
+
+	$('.select--sizegame').click(function () {
+        var menu = $('.list--sizegame');
+        $(this).toggleClass('active');
+        if (menu.is(':visible')) {
+            menu.slideUp();
+        } else {
+            menu.slideDown();
+        }
+    });
+
 	let valueInput = v => document.getElementById(v);
 	var modal = valueInput('HelloModal'),
 	container = valueInput('containerSection'),
@@ -35,7 +55,7 @@ $(document).ready(function(){
 						});
 						click_flag = 0;
 					}
-					
+
 		var category = valueInput('category').value,
 		sizeGame = valueInput('sizeGame').value;
 		var last_img; //Последняя показанная картинка
