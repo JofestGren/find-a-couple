@@ -39,7 +39,11 @@ $(document).ready(function(){
 }
 
 
+<<<<<<< HEAD
 function startTIME() {
+=======
+function startTIME() { 
+>>>>>>> d16352a7b23ee2f597fe171a687276fac30a6bc1
 	if (game_flag == 1)
 	{
 		var thisDate = new Date();
@@ -123,7 +127,11 @@ function game() {
         answerBtn.onclick = function(){
         	for (var i = 0; i < sizeGame; i++) {
         		$('.' + i).css('backgroundImage', 'url(' + img_der + i + '.jpg)');
+<<<<<<< HEAD
         	}
+=======
+        	}	
+>>>>>>> d16352a7b23ee2f597fe171a687276fac30a6bc1
         	game_flag = 0;
         };
 
@@ -155,10 +163,18 @@ function game() {
 			game_flag = 0;
 			if (game_time < (localStorage.getItem(localStorageName)) || localStorage.getItem(localStorageName) == undefined) {
 				localStorage.setItem(localStorageName, game_time.getTime());
+<<<<<<< HEAD
 				resultCreate();
 			}
 			else
 				resultCreate();
+=======
+				popup();
+				popup();
+			}
+			else
+				popup();
+>>>>>>> d16352a7b23ee2f597fe171a687276fac30a6bc1
 		}
 	});
      }
