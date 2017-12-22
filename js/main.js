@@ -1,24 +1,24 @@
 $(document).ready(function(){
 
 	$('.select--category').click(function () {
-        var menu = $('.list--category');
-        $(this).toggleClass('active');
-        if (menu.is(':visible')) {
-            menu.slideUp();
-        } else {
-            menu.slideDown();
-        }
-    });
+		var menu = $('.list--category');
+		$(this).toggleClass('active');
+		if (menu.is(':visible')) {
+			menu.slideUp();
+		} else {
+			menu.slideDown();
+		}
+	});
 
 	$('.select--sizegame').click(function () {
-        var menu = $('.list--sizegame');
-        $(this).toggleClass('active');
-        if (menu.is(':visible')) {
-            menu.slideUp();
-        } else {
-            menu.slideDown();
-        }
-    });
+		var menu = $('.list--sizegame');
+		$(this).toggleClass('active');
+		if (menu.is(':visible')) {
+			menu.slideUp();
+		} else {
+			menu.slideDown();
+		}
+	});
 
 	let valueInput = v => document.getElementById(v);
 	var modal = valueInput('HelloModal'),
@@ -26,6 +26,25 @@ $(document).ready(function(){
 	startGameBtn = valueInput('startGameBtn');
 	answerBtn = valueInput('answerBtn');
 	reGameBtn = valueInput('reGameBtn');
+	var startDate = new Date();
+
+	function startTIME() { 
+		var thisDate = new Date();
+		var t = thisDate.getTime() - startDate.getTime();
+		var ms = t%1000; t-=ms; ms=Math.floor(ms/10);
+		t = Math.floor (t/1000);
+		var s = t%60; t-=s;
+		t = Math.floor (t/60);
+		var m = t%60; t-=m;
+		t = Math.floor (t/60);
+		var h = t%60;
+		if (h<10) h='0'+h;
+		if (m<10) m='0'+m;
+		if (s<10) s='0'+s;
+		if (ms<10) ms='0'+ms;
+		document.timeForm.time.value = h + ':' + m + ':' + s + '.' + ms;
+		setTimeout(startTIME,10);
+	}
 
 	function add(count) {
 		var index, valueIndex;
@@ -47,17 +66,19 @@ $(document).ready(function(){
 	}
 	function game() {
 
-					function clearImg() {
-						$('.game div').each(function(){
-							if( $(this).data('state') == 1 ){
-								$(this).data('state',0).attr('data-state',0).css('backgroundImage', 'none');
-							}
-						});
-						click_flag = 0;
-					}
+		function clearImg() {
+			$('.game div').each(function(){
+				if( $(this).data('state') == 1 ){
+					$(this).data('state',0).attr('data-state',0).css('backgroundImage', 'none');
+				}
+			});
+			click_flag = 0;
+		}
 
-		var category = valueInput('category').value,
-		sizeGame = valueInput('sizeGame').value;
+		// var category = valueInput('category').value,
+		// var sizeGame = valueInput('sizeGame').value;
+		var category = "Animals";
+		var sizeGame = 16;
 		var last_img; //Последняя показанная картинка
 		var img_der = 'image/'; //Путь к папке с картинками
 		var count_click = 0; //Кол-во кликов
@@ -88,9 +109,8 @@ $(document).ready(function(){
         	}
         };
         reGameBtn.onclick = function(){location.reload()};
-
+        startTIME();
          $('.game div').click(function(){ //Клик на игровом поле
-
 		if( $(this).data('state') == 0 && click_flag == 0){ //Если ячейка закрыта
 			if( count_click == 0 ){ //Если первый клик по закрытому полю
 				count_click++;
