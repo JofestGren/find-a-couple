@@ -6,36 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/x-icon" href="./img/Find-a-Couple-icon.ico">
     <title>Find a Couple</title>
+    <link rel="stylesheet" href="./css/animate.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <div id="HelloModal" class="modal">
         <div class="modal-content">
             <h2 class="modal-title">Find a Couple</h2>
-            <p class="modal-text">
-                Hi check parameters for start game.
-            </p>
             <div class="container-selects">
-                <div class="modal-select select--category">
-                    <span class="modal-select__title">Category</span>
-                    <!-- <select class="modal-select__category" name="" id="category"> -->
-                    <ul class="modal-select__list list--category" id="category">
-                        <li class="modal-select__item" value="Animals">Animals</li>
-                        <li class="modal-select__item" value="Car">Car</li>
-                        <li class="modal-select__item" value="Flag">Flag</li>
-                    </ul>
-                </div>
-                <div class="modal-select select--sizegame">
-                    <!-- <select class="modal-select__category" name="" id="sizeGame"> -->
-                    <span class="modal-select__title">Size Game</span>
-                    <ul class="modal-select__list list--sizegame" id="sizeGame">
-                        <li class="modal-select__item" value="4">2x2</li>
-                        <li class="modal-select__item" value="8">4x2</li>
-                        <li class="modal-select__item" value="16">4x4</li>
-                        <li class="modal-select__item" value="20">5x4</li>
-                        <li class="modal-select__item" value="30">6x5</li>
-                        <li class="modal-select__item" value="36">6x6</li>
-                    </ul>
+                <p class="modal-text">
+                    Hi check parameters for start game.
+                </p>
+                <!-- <div class="select-titles">
+                    <div id="descCategory" class="select-title">
+                        <span>Category</span>
+                    </div>
+                    <div id="descSizeGame" class="select-title">
+                        <span>Size Game</span>
+                    </div>
+                </div> -->
+                <div class="select-field">
+                    <div class="modal-select select--category">
+                        <div class="select-titles select-titles--category animated fadeInUp">
+                            <span id="descCategory" class="select-title">Category</span>
+                        </div>
+                        <span class="modal-select__title" id="titleCategory" value="Animals">Category</span>
+                        <ul class="modal-select__list list--category" id="category">
+                            <li class="modal-select__item" value="Animals">Animals</li>
+                            <li class="modal-select__item" value="Car">Car</li>
+                            <li class="modal-select__item" value="Flag">Flag</li>
+                        </ul>
+                    </div>
+                    <div class="modal-select select--sizegame">
+                        <div class="select-titles select-titles--sizeGame animated fadeInUp">
+                            <span id="descSizeGame" class="select-title">Size Game</span>
+                        </div>
+                        <span class="modal-select__title" id="titleSizeGame" value="4">Size Game</span>
+                        <ul class="modal-select__list list--sizegame" id="sizeGame">
+                            <li class="modal-select__item" value="4">2x2</li>
+                            <li class="modal-select__item" value="12">4x3</li>
+                            <li class="modal-select__item" value="16">4x4</li>
+                            <li class="modal-select__item" value="20">5x4</li>
+                            <li class="modal-select__item" value="30">6x5</li>
+                            <li class="modal-select__item" value="36">6x6</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="modal-btn">
@@ -80,8 +95,8 @@
                     <div class="result-window__time">Your time<span>0</span></div>
                 </div>
                 <div class="result-window-btn">
-                    <button class="g-btn" id="ResultNewGameBtn" type="button" name="button">New Game</button>
-                    <button class="g-btn" id="ExitBtn" type="button" name="button">Exit</button>
+                    <button class="g-btn" id="resultNewGameBtn" type="button" name="button">New Game</button>
+                    <button class="g-btn" id="exitBtn" type="button" name="button">Exit</button>
                 </div>
             </div>
         </div>

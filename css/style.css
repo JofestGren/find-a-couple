@@ -41,7 +41,7 @@ body {
     background-color: #10ACC2;
     margin: 10% auto;
     padding: 20px;
-    /* border: 1px solid #888; */
+    border: 1px solid #888;
     width: 60%;
     border-radius: 10px;
 }
@@ -52,20 +52,37 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.modal-text {
-    color: #B1EEF2;
-    font-size: 24px;
+    margin: 10px 0;
 }
 
 .container-selects {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-direction: column;
     max-width: 400px;
     width: 100%;
+    border: 6px solid #B1EEF2;
+    border-radius: 5px;
+    background-color: #B1EEF2;
+    padding: 10px;
+}
 
+.modal-text {
+    color: #001C20;
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.select-field {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 380px;
+    width: 100%;
+    padding: 5px;
+    padding-top: 60px;
 }
 
 .modal-select {
@@ -73,11 +90,13 @@ body {
     background-color: #001C20;
     padding: 0 40px;
     height: 50px;
+    width: 90px;
     line-height: 48px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
     transition: all linear .2s;
+    text-align: center;
 }
 
 .modal-select:hover {
@@ -94,11 +113,46 @@ body {
     height: 18px;
     background: url('../svg/select-arrow-white.svg') 0 0 no-repeat;
     background-size: 100%;
+    transition: all linear .2s;
 }
 
 .modal-select:hover::after {
     background: url('../svg/select-arrow-blue.svg') 0 0 no-repeat;
     background-size: 100%;
+}
+
+.select-titles {
+    position: absolute;
+    display: block;
+    top: -55px;
+    left: 0px;
+    z-index: 1;
+    max-width: 170px;
+    width: 100%;
+    height: 50px;
+}
+
+.select-titles--category {
+    display: none;
+}
+
+.select-titles--sizeGame {
+    display: none;
+}
+
+.select-title {
+    display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 5px solid #001C20;
+    background-color: #001C20;
+    font-size: 20px;
+    height: 30px;
+    font-family: 'Roboto-Bold';
+    color: #fff;
+    border-bottom-color: #10ACC2;
+    padding: 5px;
+    line-height: 30px;
 }
 
 .modal-select__list {
@@ -107,7 +161,7 @@ body {
     top: 55px;
     left: -40px;
     z-index: 1;
-    max-width: 150px;
+    max-width: 170px;
     width: 100%;
 }
 
