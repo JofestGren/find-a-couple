@@ -63,7 +63,25 @@ $(document).ready(function(){
 
 	let resultWindow = valueInput('resultWindow');
 
-	let resultCreate = (game_time) => {resultWindow.style.display = 'block';};
+	let resultCreate = (time, name) => {
+		resultWindow.style.display = 'block';
+		resultTimeTxt = valueInput('resultTimeTxt');
+		resultTime = valueInput('resultTime');
+		if (name === 'best') {
+			resultTimeTxt.innerText = 'Your best time ';
+			resultTime.innerText = time;
+		} else if (name === 'time') {
+			console.log(resultTime);
+			console.log(resultTime.innerText);
+			console.log(time);
+			console.log('-----------');
+			resultTimeTxt.innerText = 'Your time ';
+			resultTime.innerText = time;
+			console.log(resultTime);
+			console.log(resultTime.innerText);
+			console.log(time);
+		}
+	}
 
 	function add(count) {
 		var index, valueIndex;
@@ -191,10 +209,10 @@ $(document).ready(function(){
 
  			if (game_time < (localStorage.getItem(localStorageName)) || localStorage.getItem(localStorageName) == undefined) {
  				localStorage.setItem(localStorageName, game_time);
- 				resultCreate(game_time);
+ 				resultCreate(game_time, 'best');
  			}
  			else
- 				resultCreate();
+ 				resultCreate(game_time, 'time');
  		}
  	});
 	});

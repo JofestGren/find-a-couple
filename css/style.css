@@ -380,8 +380,7 @@ body {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    padding: 10px 0px;
-    height: 150px;
+    /* height: 150px; */
 }
 
 .result-time {
@@ -423,7 +422,7 @@ body {
     flex-direction: column;
     max-width: 250px;
     width: 100%;
-    height: 100%;
+    height: 150px;
 }
 
 .result-window-btn:first-child {
