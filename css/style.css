@@ -22,6 +22,7 @@
 body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     color: #fff;
+    background: url('../img/main-bg.png');
 }
 
 .modal {
