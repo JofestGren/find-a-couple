@@ -140,7 +140,7 @@ $(document).ready(function(){
     	console.log(category, sizeGame);
     	var sizeGameTemp = sizeGame/2;
  		var last_img; //Последняя показанная картинка
- 		var img_der = 'image/'; //Путь к папке с картинками
+ 		var img_der = './image/'; //Путь к папке с картинками
  		var count_click = 0; //Кол-во кликов
  		var click_flag = 0;
         var game_array = add(sizeGame); //перемешиваем массив (картинки)
