@@ -8,17 +8,18 @@
     <title>Find a Couple</title>
     <link rel="stylesheet" href="./css/animate.css">
     <link rel="stylesheet" href="./css/style.css">
+
 </head>
 <body>
     <div id="HelloModal" class="modal">
         <div class="modal-content">
-            <h2 class="modal-title">Find a Couple</h2>
-            <div class="container-selects">
-                <p class="modal-text">
+            <h2 class="modal-title animated fadeInDown">Find a Couple</h2>
+            <div class="container-selects animated zoomIn">
+                <p class="modal-text animated slideInDown">
                     Hi check parameters for start game.
                 </p>
                 <div class="select-field">
-                    <div class="modal-select select--category">
+                    <div class="modal-select select--category animated fadeInLeft">
                         <div class="select-titles select-titles--category animated fadeInUp">
                             <span id="descCategory" class="select-title">Category</span>
                         </div>
@@ -29,7 +30,7 @@
                             <li class="modal-select__item" value="Flag">Flag</li>
                         </ul>
                     </div>
-                    <div class="modal-select select--sizegame">
+                    <div class="modal-select select--sizegame animated fadeInRight">
                         <div class="select-titles select-titles--sizeGame animated fadeInUp">
                             <span id="descSizeGame" class="select-title">Size Game</span>
                         </div>
@@ -46,49 +47,49 @@
                 </div>
             </div>
             <div class="modal-btn">
-                <button class="g-btn" id="startGameBtn" type="button" name="button">Game</button>
+                <button class="g-btn animated rotateInDownRight" id="startGameBtn" type="button" name="button">Game</button>
             </div>
         </div>
     </div>
 
     <div class="container" id="containerSection">
          <div class="game-content">
-             <div class="game-title">
+             <div class="game-title animated slideInDown">
                  <h1>Find a Couple</h1>
              </div>
              <div class="game-info">
-                <form class="game-info__result" name="timeForm">
-                    <div class="game-info__scorebest"><span>Time</span>
+                <form class="game-info__result animated fadeInLeft" name="timeForm">
+                    <div class="game-info__scorebest animated zoomIn"><span>Time</span>
                         <input name="time" size="12" maxlength="12" value="00:00:00.00">
                     </div>
-                    <div class="game-info__scorebest"><span>Best</span>
+                    <div class="game-info__scorebest animated zoomIn"><span>Best</span>
                         <input name="bestTime" size="12" maxlength="12" value="00:00:00.00">
                     </div>
                 </form>
-                 <div class="game-info__btn">
-                     <button class="g-btn game--btn" id="answerBtn" type="button" name="button">Solve game</button>
-                     <button class="g-btn game--btn" id="reGameBtn" type="button" name="button">New game</button>
+                 <div class="game-info__btn animated fadeInRight">
+                     <button class="g-btn game--btn animated slideInDown" id="answerBtn" type="button" name="button">Solve game</button>
+                     <button class="g-btn game--btn animated slideInUp" id="reGameBtn" type="button" name="button">New game</button>
                  </div>
              </div>
          </div>
-        <div class="game">
+        <div class="game animated zoomIn">
         </div>
     </div>
 
-    <div id="resultWindow" class="result-window">
+    <div id="resultWindow" class="result-window animated zoomIn">
         <div class="result-window-content">
-            <h2 class="result-window__title">Result</h2>
-            <p class="result-window__text">
+            <h2 class="result-window__title animated fadeInDown">Result</h2>
+            <p class="result-window__text animated zoomIn">
                 Goog game.
             </p>
 
             <div class="result-window-content-info">
-                <div class="result-window-info">
+                <div class="result-window-info animated fadeInLeft">
                     <div class="result-window__time"><span id="resultTimeTxt">Your time</span><span id="resultTime">0</span></div>
                 </div>
-                <div class="result-window-btn">
-                    <button class="g-btn" id="resultNewGameBtn" type="button" name="button">New Game</button>
-                    <button class="g-btn" id="exitBtn" type="button" name="button">Exit</button>
+                <div class="result-window-btn animated fadeInRight">
+                    <button class="g-btn animated slideInDown" id="resultNewGameBtn" type="button" name="button">New Game</button>
+                    <button class="g-btn animated slideInUp" id="exitBtn" type="button" name="button">Exit</button>
                 </div>
             </div>
         </div>
