@@ -104,39 +104,25 @@ window.onload = () => {
     	function startTIME() {
     		if (game_flag == 1)
     		{
-    			var thisDate = new Date();
-    			var t = thisDate.getTime() - startDate.getTime();
-    			var ms = t%1000; t-=ms; ms=Math.floor(ms/10);
-    			t = Math.floor (t/1000);
-    			var s = t%60; t-=s;
-    			t = Math.floor (t/60);
-    			var m = t%60; t-=m;
-    			t = Math.floor (t/60);
-    			var h = t%60;
-    			if (h<10) h='0'+h;
-    			if (m<10) m='0'+m;
-    			if (s<10) s='0'+s;
-    			if (ms<10) ms='0'+ms;
-    			document.timeForm.time.value = h + ':' + m + ':' + s + '.' + ms;
-    			game_time.setHours(h, m, s, ms);
-    			setTimeout(startTIME,10);
+    			game_time += 1;
+    			ShowTime("time", game_time);
+    			setTimeout(startTIME,1000);
     		}
     	}
 
     	let category = valueInput('titleCategory').innerText;
-		(category === 'Category') ? category = 'Animals' : category = category;
+				(category === 'Category') ? category = 'Animals' : category = category;
     	let strSizeGame = valueInput('titleSizeGame').innerText,
     		sizeGame = Number(strSizeGame[0]) * Number(strSizeGame[2]) || 4;
-    	console.log(category, sizeGame);
+    		console.log(category, sizeGame);
     	let sizeGameTemp = sizeGame/2,
- 			last_img, //Последняя показанная картинка
- 		 	img_der = './image/', //Путь к папке с картинками
- 			count_click = 0, //Кол-во кликов
- 			click_flag = 0,
-        	game_array = add(sizeGame), //перемешиваем массив (картинки)
-        	localStorageName = "bestTime",
-        	game_time = new Date(),
-        	startDate = new Date();
+ 				last_img, //Последняя показанная картинка
+ 		 		img_der = './image/', //Путь к папке с картинками
+ 				count_click = 0, //Кол-во кликов
+ 				click_flag = 0,
+      	game_array = add(sizeGame), //перемешиваем массив (картинки)
+        localStorageName = "bestTime",
+        game_time = 0;
 
         for (var i = 0; i < sizeGame; i++) {
         	$("<div/>", {
@@ -166,12 +152,40 @@ window.onload = () => {
         reGameBtn.onclick = () => location.reload();
         resultNewGameBtn.onclick = () => location.reload();
         exitBtn.onclick = () => window.close();
+				if(localStorage.getItem(localStorageName) != undefined)
+        ShowTime("bestTime", localStorage.getItem(localStorageName));
 
-        document.timeForm.bestTime.value = localStorage.getItem(localStorageName);
+				function ConvertTime(time) {
+					var hour = time / 60;
+					hour = Math.floor(hour)
+				  if (hour < 10) hour = "0"+hour;
+
+	        var min = time % 60;
+					if (min < 10) min = "0"+min;
+	        time = hour + ":" + min;
+					return time;
+				}
+
+				function ShowTime(typeTime, time) {
+			 		time = ConvertTime(time);
+
+					let timeOutput = valueInput('time'),
+					bestTimeOutput = valueInput('bestTime');
+
+        	if(typeTime == "time")
+					timeOutput.innerText = time;
+					if(typeTime == "bestTime")
+					bestTimeOutput.innerText = time;
+			}
+
 
 		$('.game div').click(function() { //Клик на игровом поле
-			game_flag = 1;
-			startTIME();
+
+			if(game_flag != 1)
+			{
+				game_flag = 1;
+				startTIME();
+			}
 
 	 		if($(this).data('state') == 0 && click_flag == 0) { //Если ячейка закрыта
 
@@ -200,10 +214,10 @@ window.onload = () => {
 
 	 			if (game_time < (localStorage.getItem(localStorageName)) || localStorage.getItem(localStorageName) == undefined) {
 	 				localStorage.setItem(localStorageName, game_time);
-	 				resultCreate(game_time, 'best');
+	 				resultCreate(ConvertTime(game_time), 'best');
 	 			}
 	 			else
-	 				resultCreate(game_time, 'time');
+	 				resultCreate(ConvertTime(game_time), 'time');
 	 		}
  		});
 	});

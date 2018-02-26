@@ -60,10 +60,10 @@
              <div class="game-info">
                 <form class="game-info__result animated fadeInLeft" name="timeForm">
                     <div class="game-info__scorebest animated zoomIn"><span>Time</span>
-                        <input name="time" size="12" maxlength="12" value="00:00:00.00">
+                        <span id="time" size="12" maxlength="12">00:00</span>
                     </div>
                     <div class="game-info__scorebest animated zoomIn"><span>Best</span>
-                        <input name="bestTime" size="12" maxlength="12" value="00:00:00.00">
+                        <span id="bestTime" size="12" maxlength="12">00:00</span>
                     </div>
                 </form>
                  <div class="game-info__btn animated fadeInRight">
@@ -85,7 +85,10 @@
 
             <div class="result-window-content-info">
                 <div class="result-window-info animated fadeInLeft">
-                    <div class="result-window__time"><span id="resultTimeTxt">Your time</span><span id="resultTime">0</span></div>
+                    <div class="result-window__time">
+                      <span id="resultTimeTxt">Your time</span>
+                      <span id="resultTime">0</span>
+                    </div>
                 </div>
                 <div class="result-window-btn animated fadeInRight">
                     <button class="g-btn animated slideInDown" id="resultNewGameBtn" type="button" name="button">New Game</button>
