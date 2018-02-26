@@ -104,22 +104,9 @@ window.onload = () => {
     	function startTIME() {
     		if (game_flag == 1)
     		{
-    			var thisDate = new Date();
-    			var t = thisDate.getTime() - startDate.getTime();
-    			var ms = t%1000; t-=ms; ms=Math.floor(ms/10);
-    			t = Math.floor (t/1000);
-    			var s = t%60; t-=s;
-    			t = Math.floor (t/60);
-    			var m = t%60; t-=m;
-    			t = Math.floor (t/60);
-    			var h = t%60;
-    			if (h<10) h='0'+h;
-    			if (m<10) m='0'+m;
-    			if (s<10) s='0'+s;
-    			if (ms<10) ms='0'+ms;
-    			document.timeForm.time.value = h + ':' + m + ':' + s + '.' + ms;
-    			game_time.setHours(h, m, s, ms);
-    			setTimeout(startTIME,10);
+    			game_time += 1;
+    			ShowTime("time", game_time);
+    			setTimeout(startTIME,1000);
     		}
     	}
 
@@ -135,7 +122,7 @@ window.onload = () => {
  			click_flag = 0,
         	game_array = add(sizeGame), //перемешиваем массив (картинки)
         	localStorageName = "bestTime",
-        	game_time;
+        	game_time = 0;
 
         for (var i = 0; i < sizeGame; i++) {
         	$("<div/>", {
@@ -166,11 +153,27 @@ window.onload = () => {
         resultNewGameBtn.onclick = () => location.reload();
         exitBtn.onclick = () => window.close();
 
-        document.timeForm.bestTime.value = localStorage.getItem(localStorageName);
+        ShowTime("bestTime", localStorage.getItem(localStorageName));
+
+		function ShowTime(typeTime, time){
+        var hour = time / 60;
+        var min = time % 60;
+        time = hour + ":" + min;
+        if(typeTime == "bestTime")
+        	
+			document.timeForm.bestTime.innerText = time;
+		if(typeTime == "time")
+			document.timeForm.time.innerText = time;
+		}
+
 
 		$('.game div').click(function() { //Клик на игровом поле
-			game_flag = 1;
-			startTIME();
+			
+			if(game_flag != 1)
+			{
+				game_flag = 1;
+				startTIME();			
+			}
 
 	 		if($(this).data('state') == 0 && click_flag == 0) { //Если ячейка закрыта
 
