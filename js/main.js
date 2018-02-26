@@ -135,8 +135,7 @@ window.onload = () => {
  			click_flag = 0,
         	game_array = add(sizeGame), //перемешиваем массив (картинки)
         	localStorageName = "bestTime",
-        	game_time = new Date(),
-        	startDate = new Date();
+        	game_time;
 
         for (var i = 0; i < sizeGame; i++) {
         	$("<div/>", {
