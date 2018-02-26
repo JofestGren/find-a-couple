@@ -126,7 +126,7 @@ window.onload = () => {
     	let category = valueInput('titleCategory').innerText;
 		(category === 'Category') ? category = 'Animals' : category = category;
     	let strSizeGame = valueInput('titleSizeGame').innerText,
-    		sizeGame = Number(strSizeGame[0]) * Number(strSizeGame[2]);
+    		sizeGame = Number(strSizeGame[0]) * Number(strSizeGame[2]) || 4;
     	console.log(category, sizeGame);
     	let sizeGameTemp = sizeGame/2,
  			last_img, //Последняя показанная картинка
