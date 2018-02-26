@@ -111,18 +111,18 @@ window.onload = () => {
     	}
 
     	let category = valueInput('titleCategory').innerText;
-		(category === 'Category') ? category = 'Animals' : category = category;
+				(category === 'Category') ? category = 'Animals' : category = category;
     	let strSizeGame = valueInput('titleSizeGame').innerText,
     		sizeGame = Number(strSizeGame[0]) * Number(strSizeGame[2]) || 4;
-    	console.log(category, sizeGame);
+    		console.log(category, sizeGame);
     	let sizeGameTemp = sizeGame/2,
- 			last_img, //Последняя показанная картинка
- 		 	img_der = './image/', //Путь к папке с картинками
- 			count_click = 0, //Кол-во кликов
- 			click_flag = 0,
-        	game_array = add(sizeGame), //перемешиваем массив (картинки)
-        	localStorageName = "bestTime",
-        	game_time = 0;
+ 				last_img, //Последняя показанная картинка
+ 		 		img_der = './image/', //Путь к папке с картинками
+ 				count_click = 0, //Кол-во кликов
+ 				click_flag = 0,
+      	game_array = add(sizeGame), //перемешиваем массив (картинки)
+        localStorageName = "bestTime",
+        game_time = 0;
 
         for (var i = 0; i < sizeGame; i++) {
         	$("<div/>", {
@@ -152,27 +152,39 @@ window.onload = () => {
         reGameBtn.onclick = () => location.reload();
         resultNewGameBtn.onclick = () => location.reload();
         exitBtn.onclick = () => window.close();
-
+				if(localStorage.getItem(localStorageName) != undefined)
         ShowTime("bestTime", localStorage.getItem(localStorageName));
 
-		function ShowTime(typeTime, time){
-        var hour = time / 60;
-        var min = time % 60;
-        time = hour + ":" + min;
-        if(typeTime == "bestTime")
-        	
-			document.timeForm.bestTime.innerText = time;
-		if(typeTime == "time")
-			document.timeForm.time.innerText = time;
-		}
+				function ConvertTime(time) {
+					var hour = time / 60;
+					hour = Math.floor(hour)
+				  if (hour < 10) hour = "0"+hour;
+
+	        var min = time % 60;
+					if (min < 10) min = "0"+min;
+	        time = hour + ":" + min;
+					return time;
+				}
+
+				function ShowTime(typeTime, time) {
+			 		time = ConvertTime(time);
+
+					let timeOutput = valueInput('time'),
+						bestTimeOutput = valueInput('bestTime');
+
+        	if(typeTime == "time")
+						timeOutput.innerText = time;
+					if(typeTime == "bestTime")
+						bestTimeOutput.innerText = time;
+				}
 
 
 		$('.game div').click(function() { //Клик на игровом поле
-			
+
 			if(game_flag != 1)
 			{
 				game_flag = 1;
-				startTIME();			
+				startTIME();
 			}
 
 	 		if($(this).data('state') == 0 && click_flag == 0) { //Если ячейка закрыта
@@ -202,10 +214,10 @@ window.onload = () => {
 
 	 			if (game_time < (localStorage.getItem(localStorageName)) || localStorage.getItem(localStorageName) == undefined) {
 	 				localStorage.setItem(localStorageName, game_time);
-	 				resultCreate(game_time, 'best');
+	 				resultCreate(ConvertTime(game_time), 'best');
 	 			}
 	 			else
-	 				resultCreate(game_time, 'time');
+	 				resultCreate(ConvertTime(game_time), 'time');
 	 		}
  		});
 	});
